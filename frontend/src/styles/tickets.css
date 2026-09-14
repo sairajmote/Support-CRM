@@ -62,7 +62,7 @@
   border-color: var(--primary);
 
   box-shadow:
-    0 0 0 3px rgba(91, 135, 249, 0.12);
+    0 0 0 3px rgba(29, 78, 216, 0.14);
 }
 
 .search-icon {
@@ -120,7 +120,7 @@
   border-color: var(--primary);
 
   box-shadow:
-    0 0 0 3px rgba(91, 135, 249, 0.12);
+    0 0 0 3px rgba(29, 78, 216, 0.14);
 }
 
 
@@ -361,7 +361,7 @@
 
   background: var(--open-bg);
 
-  border: 1px solid rgba(91, 135, 249, 0.2);
+  border: 1px solid rgba(29, 78, 216, 0.2);
 }
 
 .status-in-progress {
@@ -369,7 +369,7 @@
 
   background: var(--progress-bg);
 
-  border: 1px solid rgba(224, 155, 59, 0.2);
+  border: 1px solid rgba(180, 83, 9, 0.2);
 }
 
 .status-resolved {
@@ -377,7 +377,7 @@
 
   background: var(--resolved-bg);
 
-  border: 1px solid rgba(52, 211, 153, 0.2);
+  border: 1px solid rgba(4, 120, 87, 0.2);
 }
 
 .status-closed {
@@ -385,7 +385,7 @@
 
   background: var(--closed-bg);
 
-  border: 1px solid rgba(248, 113, 113, 0.2);
+  border: 1px solid rgba(71, 85, 105, 0.2);
 }
 
 

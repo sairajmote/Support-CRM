@@ -16,20 +16,24 @@
   background: var(--surface);
   color: var(--text);
 
-  padding: 9px 15px;
-  border-radius: 8px;
+  padding: 9px 16px;
+  border-radius: var(--radius-btn);
 
+  font-family: var(--font-heading);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 650;
+  letter-spacing: -0.01em;
 
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.18s ease;
 }
 
 .pagination button:hover:not(:disabled) {
-  background: var(--primary);
-  border-color: var(--primary-dark);
+  background: var(--btn-primary-bg);
+  border-color: var(--btn-primary-hover);
+  color: var(--btn-primary-text);
   transform: translateY(-1px);
+  box-shadow: var(--btn-primary-shadow);
 }
 
 .pagination button:disabled {

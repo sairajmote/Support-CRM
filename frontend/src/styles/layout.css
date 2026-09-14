@@ -24,9 +24,11 @@
 
   padding: 0 42px;
 
-  background: rgba(17, 17, 22, 0.96);
+  background: rgba(255, 255, 255, 0.94);
 
   border-bottom: 1px solid var(--border);
+
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
 
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -53,7 +55,7 @@
 
   border-radius: 10px;
 
-  background: var(--primary);
+  background: var(--btn-primary-bg);
 
   color: white;
 
@@ -61,7 +63,7 @@
   font-weight: 800;
 
   box-shadow:
-    0 5px 14px rgba(37, 99, 235, 0.22);
+    0 4px 12px rgba(29, 78, 216, 0.25);
 }
 
 .brand h1 {
@@ -95,22 +97,22 @@
   align-items: center;
   gap: 7px;
 
-  padding: 9px 14px;
+  padding: 10px 18px;
 
-  color: white;
-
-  background: var(--primary);
+  color: var(--btn-primary-text);
+  background: var(--btn-primary-bg);
 
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-btn);
 
-  font-size: 12px;
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
 
   cursor: pointer;
 
-  box-shadow:
-    0 4px 12px rgba(37, 99, 235, 0.18);
+  box-shadow: var(--btn-primary-shadow);
 
   transition:
     background 0.18s ease,
@@ -124,12 +126,9 @@
 }
 
 .new-ticket-btn:hover {
-  background: var(--primary-dark);
-
+  background: var(--btn-primary-hover);
   transform: translateY(-1px);
-
-  box-shadow:
-    0 7px 17px rgba(37, 99, 235, 0.22);
+  box-shadow: var(--btn-primary-shadow-hover);
 }
 
 

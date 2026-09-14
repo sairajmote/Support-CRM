@@ -18,7 +18,8 @@
   border-radius: var(--radius-lg);
 
   box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.5);
+    0 12px 35px rgba(15, 23, 42, 0.08),
+    0 4px 12px rgba(15, 23, 42, 0.04);
 
   animation: newTicketIn 0.2s ease;
 
@@ -145,32 +146,28 @@
 
 .new-ticket-form input:focus,
 .new-ticket-form textarea:focus {
-  background: var(--surface-soft);
+  background: #ffffff;
 
   border-color: var(--primary);
 
   box-shadow:
-    0 0 0 3px rgba(91, 135, 249, 0.12);
+    0 0 0 3px rgba(29, 78, 216, 0.14);
 }
 
 
 /* =========================================================
-   NEW TICKET BUTTONS
+   NEW TICKET BUTTONS (DATASTRAW STYLE)
    ========================================================= */
 
 .new-ticket-form button {
-  height: 40px;
-
-  padding: 0 17px;
-
-  border-radius: 8px;
-
-  font-size: 11px;
-
-  font-weight: 700;
-
+  height: 42px;
+  padding: 0 20px;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
   cursor: pointer;
-
   transition:
     background 0.18s ease,
     border-color 0.18s ease,
@@ -183,46 +180,32 @@
 /* Create */
 
 .new-ticket-form button:first-of-type {
-  color: white;
-
-  background: var(--primary);
-
-  border: 1px solid var(--primary);
-
-  box-shadow:
-    0 4px 11px rgba(37, 99, 235, 0.18);
+  color: var(--btn-primary-text);
+  background: var(--btn-primary-bg);
+  border: 1px solid var(--btn-primary-bg);
+  box-shadow: var(--btn-primary-shadow);
 }
 
 .new-ticket-form button:first-of-type:hover {
-  background: var(--primary-dark);
-
-  border-color: var(--primary-dark);
-
+  background: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
   transform: translateY(-1px);
-
-  box-shadow:
-    0 6px 15px rgba(37, 99, 235, 0.22);
+  box-shadow: var(--btn-primary-shadow-hover);
 }
 
 
 /* Cancel */
 
 .new-ticket-form button:last-of-type {
-  margin-left: 8px;
-
-  color: var(--text-secondary);
-
-  background: var(--surface-soft);
-
-  border: 1px solid var(--border);
+  margin-left: 10px;
+  color: var(--btn-secondary-text);
+  background: var(--btn-secondary-bg);
+  border: 1px solid var(--btn-secondary-border);
 }
 
 .new-ticket-form button:last-of-type:hover {
-  color: var(--text);
-
-  background: var(--border);
-
-  border-color: var(--text-muted);
+  color: #ffffff;
+  background: var(--btn-secondary-hover);
 }
 
 .required {
