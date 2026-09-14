@@ -12,7 +12,10 @@ env/
 
 # Environment variables
 .env
+.env.local
 backend/.env
+frontend/.env
+frontend/.env.local
 
 # Node
 node_modules/

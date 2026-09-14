@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from sqlalchemy import text
 from fastapi.middleware.cors import CORSMiddleware
@@ -9,9 +10,17 @@ app = FastAPI(
     description="Customer support ticket management API",
     version="1.0.0",
 )
+
+allowed_origins_raw = os.getenv("ALLOWED_ORIGINS", "")
+origins = [origin.strip() for origin in allowed_origins_raw.split(",") if origin.strip()]
+for default_origin in ["http://localhost:5173", "http://127.0.0.1:5173"]:
+    if default_origin not in origins:
+        origins.append(default_origin)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=origins,
+    allow_origin_regex=r"https://.*\.onrender\.com",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

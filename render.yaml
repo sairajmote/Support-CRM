@@ -1,0 +1,44 @@
+services:
+  # FastAPI Backend Web Service
+  - type: web
+    name: support-crm-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DATABASE_URL
+        fromDatabase:
+          name: support-crm-db
+          property: connectionString
+      - key: ALLOWED_ORIGINS
+        value: http://localhost:5173
+
+  # React Frontend Static Site
+  - type: web
+    name: support-crm-frontend
+    runtime: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: support-crm-api
+          property: host
+
+databases:
+  # Render PostgreSQL Database
+  - name: support-crm-db
+    plan: free
+    databaseName: support_crm
+    user: support_crm_user

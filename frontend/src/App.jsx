@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { API_BASE_URL } from "./config"
 import "./App.css"
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
 
   const updateTicket = () => {
     fetch(
-      `http://127.0.0.1:8000/api/tickets/${ticketDetails.ticket_id}`,
+      `${API_BASE_URL}/api/tickets/${ticketDetails.ticket_id}`,
       {
         method: "PUT",
         headers: {
@@ -64,7 +65,7 @@ function App() {
 
   const createTicket = () => {
 
-    fetch("http://127.0.0.1:8000/api/tickets/", {
+    fetch(`${API_BASE_URL}/api/tickets/`, {
 
       method: "POST",
 
@@ -111,7 +112,7 @@ function App() {
         })
 
         // refreshing
-        fetch("http://127.0.0.1:8000/api/tickets")
+        fetch(`${API_BASE_URL}/api/tickets`)
           .then((response) => response.json())
           .then((data) => {
             setTickets(data)
@@ -126,7 +127,7 @@ function App() {
 
   const addNote = () => {
     fetch(
-      `http://127.0.0.1:8000/api/tickets/${ticketDetails.ticket_id}/notes`,
+      `${API_BASE_URL}/api/tickets/${ticketDetails.ticket_id}/notes`,
       {
         method: "POST",
         headers: {
@@ -159,7 +160,7 @@ function App() {
       params.append("status", status)
     }
     setCurrentPage(1)
-    fetch(`http://127.0.0.1:8000/api/tickets?${params.toString()}`)
+    fetch(`${API_BASE_URL}/api/tickets?${params.toString()}`)
       .then((response) => response.json())
       .then((data) => setTickets(data))
 
@@ -169,11 +170,11 @@ function App() {
     if (!selectedTicket) {
       return
     }
-    fetch(`http://127.0.0.1:8000/api/tickets/${selectedTicket}`)
+    fetch(`${API_BASE_URL}/api/tickets/${selectedTicket}`)
       .then((resposne) => resposne.json())
       .then((data) => { setTicketDetails(data) })
 
-    fetch(`http://127.0.0.1:8000/api/tickets/${selectedTicket}/notes`)
+    fetch(`${API_BASE_URL}/api/tickets/${selectedTicket}/notes`)
       .then((resposne) => resposne.json())
       .then((data) => setNotes(data || []))
 
