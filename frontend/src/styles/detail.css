@@ -1,0 +1,646 @@
+/* =========================================================
+   TICKET DETAIL CARD
+   ========================================================= */
+
+.ticket-details {
+  width: 100%;
+
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow);
+
+  overflow: hidden;
+
+  animation: detailsIn 0.2s ease;
+}
+
+@keyframes detailsIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+
+  margin: 20px 24px 5px;
+
+  padding: 7px 10px;
+
+  color: var(--text-secondary);
+
+  background: var(--surface-soft);
+
+  border: 1px solid var(--border);
+
+  border-radius: 7px;
+
+  font-size: 11px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    color 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.back-btn:hover {
+  color: var(--primary);
+
+  background: var(--primary-soft);
+
+  border-color: #bfdbfe;
+}
+
+
+/* =========================================================
+   DETAIL HEADER
+   ========================================================= */
+
+.details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 12px 24px 23px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.details-ticket-id {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  padding: 4px 7px;
+
+  color: var(--primary);
+
+  background: var(--primary-soft);
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 6px;
+
+  font-family:
+    "JetBrains Mono",
+    monospace;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DETAIL TITLE
+   ========================================================= */
+
+.details-header h2 {
+  position: relative;
+
+  margin: 0;
+
+  padding-left: 13px;
+
+  color: var(--text);
+
+  font-size: 25px;
+
+  line-height: 1.25;
+
+  font-weight: 800;
+
+  letter-spacing: -0.03em;
+}
+
+.details-header h2::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 3px;
+  bottom: 3px;
+
+  width: 4px;
+
+  background: var(--primary);
+
+  border-radius: 4px;
+}
+
+
+/* =========================================================
+   DETAIL GRID
+   ========================================================= */
+
+.details-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    250px;
+
+  grid-template-rows:
+    auto
+    auto;
+
+  grid-template-areas:
+    "description status"
+    "description customer";
+
+  gap: 14px;
+
+  padding: 18px 24px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.details-main {
+  grid-area: description;
+
+  min-width: 0;
+}
+
+.details-block {
+  height: 100%;
+
+  min-height: 165px;
+
+  padding: 18px;
+
+  background: var(--surface-soft);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-md);
+}
+
+.details-block h3 {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 0 0 12px;
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+
+  font-weight: 750;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+.details-block h3::before {
+  content: "";
+
+  width: 6px;
+  height: 6px;
+
+  background: var(--primary);
+
+  border-radius: 50%;
+}
+
+.details-block p {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   DETAIL STATUS
+   ========================================================= */
+
+.details-status {
+  grid-area: status;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 17px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.details-status label {
+  margin-bottom: 8px;
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+
+  font-weight: 750;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+.details-status select {
+  width: 100%;
+
+  padding: 10px;
+
+  color: var(--text);
+
+  background: var(--surface-soft);
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.details-status select:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(91, 135, 249, 0.12);
+}
+
+
+/* =========================================================
+   SAVE STATUS
+   ========================================================= */
+
+.save-status-btn {
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 10px 12px;
+
+  color: white;
+
+  background: var(--primary);
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.save-status-btn:hover {
+  background: var(--primary-dark);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 5px 14px rgba(37, 99, 235, 0.2);
+}
+
+
+/* =========================================================
+   CUSTOMER CARD
+   ========================================================= */
+
+.customer-card {
+  grid-area: customer;
+
+  padding: 17px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.customer-card h3 {
+  margin: 0 0 11px;
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+
+  font-weight: 750;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+.customer-name {
+  margin: 0 0 4px;
+
+  color: var(--text);
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.customer-email {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   DETAIL META
+   ========================================================= */
+
+.details-meta {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 1px;
+
+  margin: 0 24px 18px;
+
+  background: var(--border);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-md);
+
+  overflow: hidden;
+}
+
+.details-meta > div {
+  padding: 13px 15px;
+
+  background: var(--surface-soft);
+}
+
+.details-meta span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--text-muted);
+
+  font-size: 9px;
+
+  font-weight: 750;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+.details-meta strong {
+  display: block;
+
+  color: var(--text-secondary);
+
+  font-family:
+    "JetBrains Mono",
+    monospace;
+
+  font-size: 10px;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   NOTES
+   ========================================================= */
+
+.details-notes {
+  margin: 0 24px 24px;
+
+  padding: 18px;
+
+  background: var(--surface-soft);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-md);
+}
+
+.details-notes h3 {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 0 0 12px;
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+
+  font-weight: 750;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+.details-notes h3::before {
+  content: "";
+
+  width: 6px;
+  height: 6px;
+
+  background: var(--primary);
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   NOTE
+   ========================================================= */
+
+.note {
+  padding: 12px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.note:last-of-type {
+  border-bottom: none;
+}
+
+.note p {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+.note span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--text-muted);
+
+  font-size: 9px;
+
+  font-family:
+    "JetBrains Mono",
+    monospace;
+}
+
+
+/* =========================================================
+   ADD NOTE
+   ========================================================= */
+
+.add-note {
+  display: flex;
+
+  gap: 9px;
+
+  margin-top: 12px;
+
+  padding-top: 13px;
+
+  border-top: 1px solid var(--border);
+}
+
+.add-note textarea {
+  flex: 1;
+
+  min-height: 66px;
+
+  padding: 10px 11px;
+
+  color: var(--text);
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  outline: none;
+
+  resize: vertical;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.add-note textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.add-note textarea:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(91, 135, 249, 0.12);
+}
+
+.add-note button {
+  align-self: flex-end;
+
+  padding: 9px 14px;
+
+  color: white;
+
+  background: var(--primary);
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.add-note button:hover:not(:disabled) {
+  background: var(--primary-dark);
+
+  transform: translateY(-1px);
+}
+
+.add-note button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}

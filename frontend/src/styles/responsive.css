@@ -1,0 +1,218 @@
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+  .dashboard {
+    width: min(100% - 30px, 700px);
+
+    padding-top: 32px;
+  }
+
+  .topbar {
+    padding: 0 20px;
+  }
+
+  .stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+      "description"
+      "status"
+      "customer";
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .topbar {
+    height: 66px;
+  }
+
+  .brand span {
+    display: none;
+  }
+
+  .new-ticket-btn {
+    padding: 8px 10px;
+  }
+
+  .dashboard {
+    width: calc(100% - 20px);
+
+    padding: 25px 0 45px;
+  }
+
+  .intro {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .intro h2 {
+    font-size: 28px;
+  }
+
+  .total-count {
+    align-items: flex-start;
+  }
+
+
+  /* Toolbar */
+
+  .toolbar {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .toolbar select {
+    width: 100%;
+  }
+
+
+  /* Tickets */
+
+  .ticket {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding: 16px;
+  }
+
+  .ticket-right {
+    width: 100%;
+
+    justify-content: space-between;
+  }
+
+  .ticket-description {
+    max-width: 100%;
+  }
+
+
+  /* Detail */
+
+  .details-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    padding:
+      10px 18px 20px;
+  }
+
+  .details-header h2 {
+    font-size: 20px;
+  }
+
+  .back-btn {
+    margin-left: 18px;
+  }
+
+  .details-grid {
+    padding:
+      15px 18px;
+  }
+
+  .details-meta {
+    grid-template-columns: 1fr;
+
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .details-notes {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+
+  /* New ticket */
+
+  .new-ticket-form {
+    width: 100%;
+
+    padding: 22px 18px;
+
+    margin-bottom: 20px;
+
+    border-radius: 13px;
+  }
+
+  .new-ticket-form h2 {
+    font-size: 18px;
+  }
+
+  .new-ticket-form button {
+    width: calc(50% - 5px);
+  }
+
+  .new-ticket-form button:last-of-type {
+    margin-left: 6px;
+  }
+
+
+  /* Notes */
+
+  .add-note {
+    flex-direction: column;
+  }
+
+  .add-note button {
+    align-self: stretch;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .stats {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .stat {
+    padding: 13px;
+  }
+
+  .stat strong {
+    font-size: 20px;
+  }
+
+  .ticket-left {
+    gap: 10px;
+  }
+
+  .ticket-info h3 {
+    font-size: 13px;
+  }
+
+  .details-header h2 {
+    font-size: 18px;
+  }
+
+  .new-ticket-form {
+    padding: 20px 15px;
+  }
+}

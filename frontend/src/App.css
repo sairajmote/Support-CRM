@@ -1,0 +1,13 @@
+/* =========================================================
+   SUPPORT CRM — STYLESHEET BARREL
+   Import order matters: variables first, then components.
+   ========================================================= */
+
+@import "./styles/variables.css";
+@import "./styles/layout.css";
+@import "./styles/stats.css";
+@import "./styles/tickets.css";
+@import "./styles/form.css";
+@import "./styles/detail.css";
+@import "./styles/pagination.css";
+@import "./styles/responsive.css";
