@@ -3,7 +3,13 @@ from sqlalchemy.orm import Session
 from sqlalchemy import desc, or_
 from app.database import get_db
 from app.models.ticket import Ticket
-from app.schemas.ticket import TicketCreate, TicketResponse, TicketUpdate, NoteCreate
+from app.schemas.ticket import (
+    TicketCreate,
+    TicketResponse,
+    TicketUpdate,
+    NoteCreate,
+    NoteResponse,
+)
 from app.models.notes import Note
 
 
@@ -113,46 +119,57 @@ def Update_ticket(
     db.refresh(existing_ticket)
     return existing_ticket
 
-@router.post("/{ticket_id}/notes")
+@router.post(
+    "/{ticket_id}/notes",
+    response_model=NoteResponse,
+    status_code=status.HTTP_201_CREATED,
+)
 def add_notes(
     ticket_id: str,
     note: NoteCreate,
     db: Session = Depends(get_db),
-    
 ):
     ticket = (
         db.query(Ticket)
-        .filter(Ticket.ticket_id == ticket_id).first()
-        )
+        .filter(Ticket.ticket_id == ticket_id)
+        .first()
+    )
     if not ticket:
         raise HTTPException(
             status_code=404,
             detail="Ticket Not Found",
         )
     new_note = Note(
-        ticket_id = ticket.id,
-        content = note.content,
+        ticket_id=ticket.id,
+        content=note.content,
     )
     db.add(new_note)
     db.commit()
     db.refresh(new_note)
-    
+
     return new_note
 
-@router.get("/{ticket_id}/notes")
+
+@router.get("/{ticket_id}/notes", response_model=list[NoteResponse])
 def get_notes(
     ticket_id: str,
     db: Session = Depends(get_db),
 ):
     ticket = (
         db.query(Ticket)
-        .filter(Ticket.ticket_id== ticket_id)
+        .filter(Ticket.ticket_id == ticket_id)
         .first()
     )
     if not ticket:
         raise HTTPException(
-            status_code= 404,
-            detail="Ticket Not Found"
+            status_code=404,
+            detail="Ticket Not Found",
         )
-    notes = db.query(Note).filter(Note.ticket_id == ticket.id).all()
+    notes = (
+        db.query(Note)
+        .filter(Note.ticket_id == ticket.id)
+        .order_by(Note.created_at.asc())
+        .all()
+    )
+    return notes
     

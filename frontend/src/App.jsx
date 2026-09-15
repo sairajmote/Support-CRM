@@ -126,6 +126,10 @@ function App() {
 
 
   const addNote = () => {
+    if (!ticketDetails?.ticket_id || !newNote.trim()) {
+      return
+    }
+
     fetch(
       `${API_BASE_URL}/api/tickets/${ticketDetails.ticket_id}/notes`,
       {
@@ -134,11 +138,17 @@ function App() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          content: newNote,
+          content: newNote.trim(),
         }),
       }
     )
-      .then((response) => response.json())
+      .then(async (response) => {
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}))
+          throw new Error(errData.detail || "Failed to add note")
+        }
+        return response.json()
+      })
       .then((data) => {
         setNotes((currentNotes) => [
           ...currentNotes,
@@ -146,6 +156,9 @@ function App() {
         ])
 
         setNewNote("")
+      })
+      .catch((error) => {
+        console.error("ADD NOTE ERROR:", error)
       })
   }
 
@@ -168,15 +181,25 @@ function App() {
 
   useEffect(() => {
     if (!selectedTicket) {
+      setTicketDetails(null)
+      setNotes([])
       return
     }
     fetch(`${API_BASE_URL}/api/tickets/${selectedTicket}`)
-      .then((resposne) => resposne.json())
+      .then((response) => response.json())
       .then((data) => { setTicketDetails(data) })
+      .catch((error) => console.error("FETCH TICKET ERROR:", error))
 
     fetch(`${API_BASE_URL}/api/tickets/${selectedTicket}/notes`)
-      .then((resposne) => resposne.json())
-      .then((data) => setNotes(data || []))
+      .then((response) => {
+        if (!response.ok) return []
+        return response.json()
+      })
+      .then((data) => setNotes(Array.isArray(data) ? data : []))
+      .catch((error) => {
+        console.error("FETCH NOTES ERROR:", error)
+        setNotes([])
+      })
 
   }, [selectedTicket])
 
