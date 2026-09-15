@@ -193,8 +193,20 @@ function App() {
           </div>
         </div>
 
-        <button className="new-ticket-btn"
-          onClick={() => setShowForm(true)}>
+        <button
+          className="new-ticket-btn"
+          onClick={() => {
+            setShowForm(true)
+            setTicketDetails(null)
+            setSelectedTicket(null)
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            })
+
+
+          }}
+        >
           <span>+</span>
           New ticket
         </button>
@@ -532,7 +544,16 @@ function App() {
                 <article
                   className="ticket"
                   key={ticket.ticket_id}
-                  onClick={() => setSelectedTicket(ticket.ticket_id)}
+                  onClick={() => {
+                    setShowForm(false)
+                    setTicketDetails(null)
+                    setSelectedTicket(null)
+                    setSelectedTicket(ticket.ticket_id)
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth"
+                    })
+                  }}
                 >
 
                   <div className="ticket-left">
@@ -600,6 +621,7 @@ function App() {
               <button
                 onClick={() => {
                   setCurrentPage(currentPage - 1)
+                  setShowForm(false)
                   window.scrollTo({
                     top: 0,
                     behavior: "smooth",
@@ -617,6 +639,7 @@ function App() {
               <button
                 onClick={() => {
                   setCurrentPage(currentPage + 1)
+                  setShowForm(false)
                   window.scrollTo({
                     top: 0,
                     behavior: "smooth",
